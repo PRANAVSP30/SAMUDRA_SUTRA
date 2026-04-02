@@ -1,88 +1,89 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpenCheck, CheckCircle2, XCircle, Eye } from 'lucide-react';
 import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+import { Shield, FileText, MapPin, AlertTriangle, ArrowLeft } from 'lucide-react';
 
 export default function AdminReports() {
-  const { reports, updateReportStatus, deleteReport } = useContext(AppContext);
+  const { reports } = useContext(AppContext);
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-ocean-900 text-white p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-10 pb-6 border-b border-accent-blue/30">
-           <div>
-              <button className="text-accent-blue/60 mb-2 hover:text-white" onClick={() => navigate('/admin/dashboard')}>← Back to Command Center</button>
-              <h1 className="text-4xl font-extrabold flex items-center gap-3">
-                 <BookOpenCheck className="text-accent-teal" size={36} /> Intelligence Feed
-              </h1>
-              <p className="text-xl text-accent-blue/70 mt-2">Approve real-time tags from Citizens</p>
-           </div>
-        </div>
+    <div className="min-h-screen bg-[#0A0E17] text-gray-300 font-sans p-6 md:p-12 overflow-x-hidden">
+      
+      {/* Navigation Header */}
+      <button 
+         onClick={() => navigate('/admin/dashboard')}
+         className="mb-8 flex items-center gap-2 text-gray-400 hover:text-white transition group"
+      >
+          <div className="w-8 h-8 rounded-full bg-[#151B28] flex items-center justify-center border border-white/5 group-hover:border-accent-blue/30 transition">
+             <ArrowLeft size={14} />
+          </div>
+          <span className="text-xs font-black uppercase tracking-widest">Back to Command</span>
+      </button>
 
-        <div className="bg-ocean-800 rounded-3xl border border-accent-blue/20 p-6 shadow-xl relative glow-effect">
-            <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-teal mb-6">RAW DATA LOGS</h2>
-            
-            <div className="space-y-4">
-                {reports.map((report) => (
-                    <motion.div 
-                        key={report.id} 
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="flex flex-col md:flex-row bg-ocean-900 border border-white/5 rounded-2xl p-4 gap-6 items-center hover:border-accent-blue/30 transition-all"
-                    >
-                        <div className="w-full md:w-48 h-32 bg-ocean-800 border-2 border-dashed border-accent-blue/40 rounded-xl flex items-center justify-center text-accent-blue/30 text-xs text-center font-bold relative overflow-hidden">
-                           {report.image ? (
-                             <>
-                               {/* Mock Image Representation */}
-                               <div className="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-accent-teal/10" />
-                               <span className="z-10 bg-ocean-900/80 px-2 py-1 rounded shadow">{report.image}</span>
-                             </>
-                           ) : "NO IMAGE PROOF"}
-                        </div>
-
-                        <div className="flex-1 flex flex-col justify-center">
-                            <div className="flex justify-between mb-2">
-                               <div className="text-xl font-bold flex items-center gap-2">
-                                  Node: {report.user}
-                               </div>
-                               <span className={`px-3 py-1 rounded-full text-xs font-bold font-mono tracking-widest ${
-                                   report.status === 'completed' ? 'bg-green-500/20 text-green-400 border border-green-500/50' : 
-                                   report.status === 'pending' ? 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/50' :
-                                   'bg-red-500/20 text-red-500 border border-red-500/50'
-                               }`}>
-                                  {report.status.toUpperCase()}
-                               </span>
+      <div className="max-w-5xl mx-auto">
+          {/* DATABASE CONTAINER */}
+          <div className="bg-[#0E131F] border border-[#1C2536] p-6 md:p-10 rounded-xl shadow-2xl relative overflow-hidden">
+             
+             {/* Neon Header */}
+             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/0 via-accent-blue to-accent-blue/0 opacity-50" />
+             
+             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                  <div>
+                      <h3 className="text-lg font-black text-white uppercase tracking-widest flex items-center gap-3">
+                         <FileText size={20} className="text-accent-blue" /> Civilian Upload Database
+                      </h3>
+                      <p className="text-xs text-gray-500 font-mono mt-2">Live sync node connected to public endpoints.</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-gray-500 bg-black/50 px-3 py-1.5 rounded border border-white/5 flex items-center gap-2">
+                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live Sync Active
+                      </span>
+                      <span className="text-xs font-mono text-gray-500 bg-black/50 px-3 py-1.5 rounded border border-white/5">
+                          Total: {reports?.length || 0}
+                      </span>
+                  </div>
+              </div>
+              
+              {/* GRID */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {reports && reports.length > 0 ? reports.map((report, i) => (
+                      <motion.div 
+                         key={report.id} 
+                         initial={{ opacity: 0, y: 20 }}
+                         animate={{ opacity: 1, y: 0 }}
+                         transition={{ delay: i * 0.1 }}
+                         className="bg-[#151B28] border border-white/5 p-5 rounded-xl flex flex-col gap-4 group hover:border-accent-blue/30 transition duration-300"
+                      >
+                         <div className="w-full h-40 rounded-lg overflow-hidden border border-white/10 relative bg-black shadow-inner">
+                             {report.imageBase64 || report.imageUrl ? (
+                                <img src={report.imageBase64 || report.imageUrl} alt="intel" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                             ) : (
+                                <div className="flex items-center justify-center w-full h-full text-gray-600"><AlertTriangle size={32}/></div>
+                             )}
+                         </div>
+                         <div className="flex-1 overflow-hidden flex flex-col justify-between gap-3">
+                            <div>
+                                <h4 className="text-white text-xs font-bold leading-tight line-clamp-2 mb-1.5">{report.tags?.[0] || report.prediction}</h4>
+                                <p className="text-[10px] font-mono text-gray-400 truncate"><MapPin size={10} className="inline mr-1 text-accent-blue" />{report.address}</p>
                             </div>
                             
-                            <div className="text-accent-blue/70 text-sm mb-4">
-                                <span className="mr-4"><strong>Lat/Lng:</strong> {report.lat.toFixed(4)}, {report.lng.toFixed(4)}</span>
-                                <span className="mr-4"><strong>Tags:</strong> {report.tags?.join(', ') || 'None'}</span>
+                            <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 px-3 py-2 rounded-lg w-full justify-center mt-2 group-hover:bg-green-500/20 transition">
+                               <Shield size={12} className="text-green-500" />
+                               <span className="text-[10px] font-black text-green-500 tracking-widest uppercase">AI Verified</span>
                             </div>
-                        </div>
-
-                        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-                            {report.status === 'pending' && (
-                                <button onClick={() => updateReportStatus(report.id, 'in-progress')} className="bg-green-600/20 hover:bg-green-500/40 border border-green-500 text-green-300 font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition">
-                                    <CheckCircle2 size={16} /> Approve (Push to Map)
-                                </button>
-                            )}
-                            <button onClick={() => deleteReport(report.id)} className="bg-red-600/20 hover:bg-red-500/40 border border-red-500 text-red-400 font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition">
-                                <XCircle size={16} /> Reject & Delete Fake
-                            </button>
-                             <button className="bg-ocean-800 hover:bg-ocean-700 border border-accent-blue text-accent-blue font-bold py-2 px-4 rounded-xl flex items-center justify-center transition">
-                                <Eye size={18} />
-                            </button>
-                        </div>
-                    </motion.div>
-                ))}
-
-                {reports.length === 0 && (
-                    <div className="text-center text-accent-blue/50 py-10">No intelligence reports in the queue.</div>
-                )}
-            </div>
-        </div>
+                         </div>
+                      </motion.div>
+                  )) : (
+                      <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-20 bg-[#151B28] rounded-xl border border-white/5 border-dashed">
+                          <AlertTriangle size={48} className="mx-auto text-gray-700 mb-4" />
+                          <p className="text-gray-500 text-sm font-mono">Network silent. No incoming citizen reports detected.</p>
+                      </div>
+                  )}
+              </div>
+          </div>
       </div>
     </div>
   );

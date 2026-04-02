@@ -18,6 +18,19 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMsg(null);
+    
+    // DEMO SANDBOX BYPASS: Hardcoded Government & Company Logins
+    if (email.trim() === 'admin@samudra.gov' && password.trim() === 'admin123') {
+       setUser({ email: email.trim(), role: 'Admin', name: 'Authority Node', uid: 'admin_123_bypass' });
+       navigate('/admin/dashboard');
+       return;
+    }
+    if (email.trim() === 'partner@samudra.com' && password.trim() === 'company123') {
+       setUser({ email: email.trim(), role: 'Company', name: 'Corporate Partner', uid: 'company_123_bypass' });
+       navigate('/company/dashboard');
+       return;
+    }
+
     try {
       // Force persistence rule based on checkbox
       await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
@@ -26,6 +39,9 @@ export default function Login() {
       if(email.includes('admin')) {
         setUser({ email, role: 'Admin', name: 'Commander', uid: userCredential.user.uid });
         navigate('/admin/dashboard');
+      } else if (email.includes('partner') || email.includes('company')) {
+        setUser({ email, role: 'Company', name: 'Corporate Partner', uid: userCredential.user.uid });
+        navigate('/company/dashboard');
       } else {
         setUser({ email, role: 'User', name: email.split('@')[0], uid: userCredential.user.uid });
         navigate('/user/dashboard');

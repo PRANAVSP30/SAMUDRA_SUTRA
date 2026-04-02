@@ -11,6 +11,9 @@ export const AppProvider = ({ children }) => {
 
   // Global Reports feed (Bound to Firestore)
   const [reports, setReports] = useState([]);
+  
+  // Global Alerts feed (Task Forces)
+  const [alerts, setAlerts] = useState([]);
 
   // Points and Credits
   const [credits, setCredits] = useState(120);
@@ -56,6 +59,20 @@ export const AppProvider = ({ children }) => {
     return () => unsubReports();
   }, []);
 
+  // Global Sync Engine for Alerts (Tasks) Stream
+  useEffect(() => {
+    const qAlerts = query(collection(db, 'alerts'), orderBy('timestamp', 'desc'));
+    const unsubAlerts = onSnapshot(qAlerts, (snapshot) => {
+       const rtAlerts = [];
+       snapshot.forEach((doc) => {
+           rtAlerts.push({ id: doc.id, ...doc.data() });
+       });
+       setAlerts(rtAlerts);
+    });
+
+    return () => unsubAlerts();
+  }, []);
+
   // Write directly to cloud database
   const addReport = async (report) => {
     try {
@@ -90,6 +107,7 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider value={{
       user, setUser,
       reports, setReports, addReport, updateReportStatus, deleteReport,
+      alerts, setAlerts,
       credits, setCredits,
       rivers, setRivers
     }}>

@@ -1,0 +1,21 @@
+{
+  "name": "Samudra Sutra",
+  "short_name": "Samudra",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E17",
+  "theme_color": "#00D2FF",
+  "description": "Stop Ocean Pollution Before It Begins.",
+  "icons": [
+    {
+      "src": "/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

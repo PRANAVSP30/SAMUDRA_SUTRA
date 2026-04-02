@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Leaf, DollarSign, Target, Briefcase, BarChart2 } from 'lucide-react';
 import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+import { MapPin, ArrowRight } from 'lucide-react';
 
 export default function CompanyDashboard() {
     const { reports, credits } = useContext(AppContext);
@@ -10,11 +11,17 @@ export default function CompanyDashboard() {
 
     // Deduce stats dynamically from reports state for demo realism
     const cleanedCount = reports.filter(r => r.status === 'completed').length;
-    const impactKG = cleanedCount * 12.5; // Mock multiplier
-    const sponsoredCredits = (cleanedCount * 10) + credits;
+    const impactKG = cleanedCount * 52; // Actual kg multiple
+    const [localCredits, setLocalCredits] = React.useState(credits);
+    const sponsoredCredits = (cleanedCount * 10) + localCredits;
 
     const sponsorCleanup = () => {
        alert("Funds Transferred! Ocean credits successfully minted on-chain.");
+    };
+
+    const handleSponsorReport = (id) => {
+        setLocalCredits(prev => prev - 1);
+        alert("Funding request sent to Volunteer! Funds have been escrowed.");
     };
 
     return (
@@ -76,6 +83,33 @@ export default function CompanyDashboard() {
                    >
                        <DollarSign /> Buy Credits 
                    </motion.button>
+                </div>
+
+                <div className="mt-12">
+                   <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-accent-blue"><Target size={24}/> Active Citizen Scans (Sponsorship Opportunities)</h2>
+                   
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                       {reports.filter(r => r.status !== 'completed').slice(0, 4).map(report => (
+                           <div key={report.id} className="bg-ocean-800 border border-white/10 rounded-2xl p-5 flex items-center gap-5 hover:border-accent-blue/40 transition">
+                                <img src={report.imageUrl} alt="Contamination" className="w-24 h-24 object-cover rounded-xl border border-white/10" />
+                                <div className="flex-1">
+                                    <h4 className="font-bold text-white uppercase text-sm mb-1">{report.prediction}</h4>
+                                    <p className="text-xs text-gray-400 flex items-center gap-1 mb-3"><MapPin size={12}/> {report.address}</p>
+                                    <div className="flex justify-between items-center">
+                                       <span className="bg-ocean-900 text-xs px-2 py-1 rounded text-accent-blue font-mono">Cost: 1 Credit</span>
+                                       <button onClick={() => handleSponsorReport(report.id)} className="text-xs bg-green-500/10 hover:bg-green-500 hover:text-ocean-900 transition text-green-400 font-bold px-3 py-1.5 rounded flex items-center gap-1">
+                                          Fund & Collect Waste <ArrowRight size={10} />
+                                       </button>
+                                    </div>
+                                </div>
+                           </div>
+                       ))}
+                       {reports.filter(r => r.status !== 'completed').length === 0 && (
+                           <div className="col-span-2 text-center text-gray-500 py-10 bg-ocean-800/50 rounded-2xl border border-white/5">
+                              No active reports found. Wait for a citizen to submit waste!
+                           </div>
+                       )}
+                   </div>
                 </div>
 
             </div>

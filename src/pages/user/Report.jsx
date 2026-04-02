@@ -7,8 +7,8 @@ import { AppContext } from '../../context/AppContext';
 // Google Gemini API Engine
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Live API Key strictly for Hackathon Demo
-const GEMINI_API_KEY = "AIzaSyANlfNODB14tvZN7fnRe7cH4F7QMcsdcZ4";
+// Live API Key securely pulled from .env to prevent GitHub leak blocks.
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 export default function UserReport() {
   const [step, setStep] = useState(1);
@@ -71,7 +71,7 @@ export default function UserReport() {
     
     // NATIVE DOWN-COMPRESSION ALGORITHM for ultra-fast Cloud AI beaming
     const canvas = document.createElement('canvas');
-    const MAX_WIDTH = 600;
+    const MAX_WIDTH = 400; // Compressed more aggressively for guaranteed sync
     const scale = MAX_WIDTH / videoRef.current.videoWidth;
     
     canvas.width = MAX_WIDTH;
@@ -79,8 +79,8 @@ export default function UserReport() {
     
     canvas.getContext('2d').drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
     
-    // Compress logic: 0.7 quality JPEG
-    const imgData = canvas.toDataURL('image/jpeg', 0.7);
+    // Compress logic: 0.4 quality JPEG (Super low payload)
+    const imgData = canvas.toDataURL('image/jpeg', 0.4);
     
     setCapturedImg(imgData);
     closeCamera();
