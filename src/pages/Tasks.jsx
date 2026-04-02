@@ -19,7 +19,7 @@ export default function Tasks() {
   };
 
   return (
-    <div className="min-h-screen bg-ocean-900 p-8 text-white">
+    <div className="min-h-screen bg-root p-8 text-primary">
       <div className="max-w-4xl mx-auto">
         
         <div className="flex justify-between items-center mb-10">
@@ -27,7 +27,7 @@ export default function Tasks() {
                 <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-teal to-accent-blue">Active Tasks</h1>
                 <p className="text-xl text-accent-blue/70 mt-2">Nearby cleanup opportunities</p>
             </div>
-            <button className="bg-ocean-800 border border-accent-blue/30 px-6 py-3 rounded-full flex items-center gap-2 hover:bg-ocean-700 transition" onClick={() => navigate('/')}>
+            <button className="bg-panel border border-accent-blue/30 px-6 py-3 rounded-full flex items-center gap-2 hover:bg-card transition" onClick={() => navigate('/')}>
                Exit
             </button>
         </div>
@@ -37,7 +37,7 @@ export default function Tasks() {
                 <motion.div 
                    key={task.id}
                    whileHover={{ y: -5 }}
-                   className="bg-ocean-800 p-6 rounded-3xl border border-accent-blue/20 flex flex-col gap-4 relative overflow-hidden group"
+                   className="bg-panel p-6 rounded-3xl border border-accent-blue/20 flex flex-col gap-4 relative overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/10 blur-[50px] rounded-full group-hover:scale-150 transition-all duration-500" />
                     
@@ -63,7 +63,7 @@ export default function Tasks() {
                         >
                            <Award size={18} /> Accept Task (+10 CR)
                         </button>
-                        <button className="bg-ocean-900 border border-accent-blue/30 p-3 rounded-xl hover:bg-ocean-700 transition">
+                        <button className="bg-root border border-accent-blue/30 p-3 rounded-xl hover:bg-card transition">
                            <Navigation className="text-accent-blue" />
                         </button>
                     </div>
@@ -71,7 +71,7 @@ export default function Tasks() {
             ))}
 
             {tasks.length === 0 && (
-                <div className="col-span-2 text-center py-20 bg-ocean-800 rounded-3xl border border-accent-teal/20">
+                <div className="col-span-2 text-center py-20 bg-panel rounded-3xl border border-accent-teal/20">
                     <Droplet size={64} className="mx-auto text-accent-teal/30 mb-4" />
                     <h2 className="text-3xl font-bold text-accent-teal/50">All Clear!</h2>
                     <p className="text-accent-blue/60 mt-2">No active tasks in your region.</p>

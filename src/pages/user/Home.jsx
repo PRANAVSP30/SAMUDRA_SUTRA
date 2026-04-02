@@ -11,7 +11,7 @@ export default function UserHome() {
   const activeTasks = reports.filter(r => r.status === 'in-progress' || r.status === 'pending');
 
   return (
-    <div className="min-h-screen bg-ocean-900 text-white p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-root text-primary p-6 relative overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-blue/10 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
@@ -27,7 +27,7 @@ export default function UserHome() {
                 <p className="text-xs text-accent-blue/80 font-mono">NODE CONNECTED</p>
              </div>
          </div>
-         <button onClick={() => navigate('/login')} className="bg-ocean-800 border-2 border-accent-blue/30 px-4 py-2 rounded-lg text-sm font-bold hover:bg-ocean-700 transition shadow-lg shrink-0 text-red-300 border-red-500/30">
+         <button onClick={() => navigate('/login')} className="bg-panel border-2 border-accent-blue/30 px-4 py-2 rounded-lg text-sm font-bold hover:bg-card transition shadow-lg shrink-0 text-red-300 border-red-500/30">
             Switch Node
          </button>
       </div>
@@ -37,15 +37,15 @@ export default function UserHome() {
          <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => navigate('/user/report')}
-            className="bg-ocean-800 border border-accent-blue/30 rounded-3xl p-8 cursor-pointer flex flex-col justify-between shadow-xl shadow-accent-blue/5 glow-effect group overflow-hidden"
+            className="bg-panel border border-accent-blue/30 rounded-3xl p-8 cursor-pointer flex flex-col justify-between shadow-xl shadow-accent-blue/5 glow-effect group overflow-hidden"
          >
-             <div className="bg-ocean-700/50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-accent-blue/50 group-hover:bg-accent-blue/20 transition-all">
+             <div className="bg-card/50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-accent-blue/50 group-hover:bg-accent-blue/20 transition-all">
                 <Camera className="text-accent-blue group-hover:scale-110 transition-transform" size={32} />
              </div>
              <h2 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-teal mb-2">Report Waste</h2>
              <p className="text-accent-blue/70">Activate AI scanner to tag pollution instantly.</p>
              
-             <button className="mt-8 bg-accent-blue/20 w-full py-4 rounded-xl font-bold text-white border border-accent-blue flex justify-center items-center gap-2 group-hover:bg-accent-blue group-hover:text-ocean-900 transition-all">
+             <button className="mt-8 bg-accent-blue/20 w-full py-4 rounded-xl font-bold text-primary border border-accent-blue flex justify-center items-center gap-2 group-hover:bg-accent-blue group-hover:text-ocean-900 transition-all">
                 <Camera size={18} /> Open Camera
              </button>
          </motion.div>
@@ -53,18 +53,18 @@ export default function UserHome() {
          <motion.div 
             whileHover={{ y: -5 }}
             onClick={() => navigate('/user/tasks')}
-            className="bg-ocean-800 border border-accent-teal/30 rounded-3xl p-8 cursor-pointer flex flex-col justify-between shadow-xl shadow-accent-teal/5 glow-effect group overflow-hidden"
+            className="bg-panel border border-accent-teal/30 rounded-3xl p-8 cursor-pointer flex flex-col justify-between shadow-xl shadow-accent-teal/5 glow-effect group overflow-hidden"
          >
-             <div className="bg-ocean-700/50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-accent-teal/50 group-hover:bg-accent-teal/20 transition-all relative">
+             <div className="bg-card/50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border border-accent-teal/50 group-hover:bg-accent-teal/20 transition-all relative">
                 <MapPin className="text-accent-teal group-hover:scale-110 transition-transform" size={32} />
-                <div className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex justify-center items-center text-xs font-bold animate-bounce shadow">
+                <div className="absolute -top-2 -right-2 bg-red-500 text-primary w-6 h-6 rounded-full flex justify-center items-center text-xs font-bold animate-bounce shadow">
                    {activeTasks.length}
                 </div>
              </div>
              <h2 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-accent-teal mb-2">View Tasks</h2>
              <p className="text-accent-blue/70">Check radar for active hotspots near you and earn credits.</p>
              
-             <button className="mt-8 bg-accent-teal/20 w-full py-4 rounded-xl font-bold text-white border border-accent-teal flex justify-center items-center gap-2 group-hover:bg-accent-teal group-hover:text-ocean-900 transition-all">
+             <button className="mt-8 bg-accent-teal/20 w-full py-4 rounded-xl font-bold text-primary border border-accent-teal flex justify-center items-center gap-2 group-hover:bg-accent-teal group-hover:text-ocean-900 transition-all">
                 <CheckCircle2 size={18} /> Assign Tasks
              </button>
          </motion.div>
@@ -80,8 +80,8 @@ export default function UserHome() {
                 </h2>
                 <p className="text-accent-blue/70">Redeem your accumulated ocean credits.</p>
              </div>
-             <div className="mt-6 md:mt-0 bg-ocean-900 border border-yellow-500/50 px-8 py-4 rounded-2xl flex flex-col items-center">
-                <span className="text-3xl font-black text-white">{credits} CR</span>
+             <div className="mt-6 md:mt-0 bg-root border border-yellow-500/50 px-8 py-4 rounded-2xl flex flex-col items-center">
+                <span className="text-3xl font-black text-primary">{credits} CR</span>
                 <span className="text-xs text-yellow-500 font-bold tracking-widest uppercase">Balance Available</span>
              </div>
          </motion.div>

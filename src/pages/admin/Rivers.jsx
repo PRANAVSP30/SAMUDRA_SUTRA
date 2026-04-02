@@ -9,18 +9,18 @@ export default function Rivers() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-ocean-900 text-white p-8">
+    <div className="min-h-screen bg-root text-primary p-8">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-10 pb-6 border-b border-accent-blue/30">
            <div>
-              <button className="text-accent-blue/60 mb-2 hover:text-white" onClick={() => navigate('/admin/dashboard')}>← Back to Command Center</button>
+              <button className="text-accent-blue/60 mb-2 hover:text-primary" onClick={() => navigate('/admin/dashboard')}>← Back to Command Center</button>
               <h1 className="text-4xl font-extrabold flex items-center gap-3">
                  <Droplets className="text-accent-teal" size={36} /> River Topology Logic
               </h1>
               <p className="text-xl text-accent-blue/70 mt-2">Manage GeoJSON flow parameters</p>
            </div>
            
-           <button className="bg-ocean-800 border-2 border-accent-teal text-white py-3 px-6 font-bold rounded-xl flex items-center gap-2 hover:bg-ocean-700 transition shadow-lg shadow-accent-teal/20" onClick={() => alert("Simulating drawing interface for GeoJSON path!")}>
+           <button className="bg-panel border-2 border-accent-teal text-primary py-3 px-6 font-bold rounded-xl flex items-center gap-2 hover:bg-card transition shadow-lg shadow-accent-teal/20" onClick={() => alert("Simulating drawing interface for GeoJSON path!")}>
               <PlusCircle size={20} /> Register New Path
            </button>
         </div>
@@ -31,7 +31,7 @@ export default function Rivers() {
                  key={river.id} 
                  initial={{ opacity: 0, y: 30 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="bg-ocean-800 border border-accent-blue/20 rounded-3xl p-6 relative overflow-hidden flex flex-col"
+                 className="bg-panel border border-accent-blue/20 rounded-3xl p-6 relative overflow-hidden flex flex-col"
               >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-accent-blue/5 rounded-full blur-[40px]" />
                   
@@ -42,8 +42,8 @@ export default function Rivers() {
                      </span>
                   </div>
 
-                  <div className="z-10 bg-ocean-900 rounded-xl p-4 flex justify-between items-center mb-6">
-                     <span className="text-gray-400">Measured Length:</span>
+                  <div className="z-10 bg-root rounded-xl p-4 flex justify-between items-center mb-6">
+                     <span className="text-muted">Measured Length:</span>
                      <span className="font-mono font-bold text-accent-blue">{river.length}</span>
                   </div>
 

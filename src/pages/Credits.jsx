@@ -8,7 +8,7 @@ export default function Credits() {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen bg-ocean-900 p-8 text-white">
+        <div className="min-h-screen bg-root p-8 text-primary">
             <div className="max-w-5xl mx-auto">
                 <div className="flex justify-between items-center mb-12 border-b border-accent-blue/20 pb-6">
                     <div>
@@ -17,7 +17,7 @@ export default function Credits() {
                         </h1>
                         <p className="text-accent-blue/70 mt-2 tracking-wide">Fund cleanups, earn verified ocean credits.</p>
                     </div>
-                     <button className="bg-ocean-800 border border-accent-blue/30 px-6 py-2 rounded-lg hover:bg-ocean-700 transition" onClick={() => navigate('/')}>
+                     <button className="bg-panel border border-accent-blue/30 px-6 py-2 rounded-lg hover:bg-card transition" onClick={() => navigate('/')}>
                         Exit Portal
                      </button>
                 </div>
@@ -46,7 +46,7 @@ export default function Credits() {
                     </motion.div>
                 </div>
 
-                <div className="bg-ocean-800 rounded-3xl p-10 border border-accent-blue/20 flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-accent-blue/10">
+                <div className="bg-panel rounded-3xl p-10 border border-accent-blue/20 flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-accent-blue/10">
                    <div className="mb-6 md:mb-0">
                       <h2 className="text-3xl font-bold flex items-center gap-3">
                          <Briefcase className="text-accent-teal"/> Sponsor a Cleanup

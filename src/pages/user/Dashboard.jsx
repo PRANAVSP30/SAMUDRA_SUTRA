@@ -9,10 +9,10 @@ export default function UserDashboard() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-ocean-900 text-white font-sans">
+    <div className="min-h-screen bg-root text-primary font-sans">
       
       {/* Sticky Top Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-ocean-900/80 border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-root/80 border-b border-subtle py-4 px-6 md:px-12 flex justify-between items-center shadow-sm">
          <div className="flex items-center gap-3">
              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-blue to-accent-teal flex items-center justify-center font-black text-ocean-900 text-lg shadow-[0_0_15px_rgba(79,172,254,0.4)]">
                 {user?.name?.charAt(0).toUpperCase() || 'U'}
@@ -25,9 +25,9 @@ export default function UserDashboard() {
          <div className="flex items-center gap-6">
             <div className="hidden md:flex flex-col items-end cursor-pointer group" onClick={() => navigate('/user/rewards')}>
                <span className="text-2xl font-black text-yellow-400 group-hover:scale-105 transition-transform">{credits} <span className="text-sm">PTS</span></span>
-               <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Balance</span>
+               <span className="text-[10px] text-muted uppercase tracking-widest font-bold">Balance</span>
             </div>
-            <button onClick={() => navigate('/login')} className="text-sm font-bold text-gray-400 hover:text-white transition">Log Out</button>
+            <button onClick={() => navigate('/login')} className="text-sm font-bold text-muted hover:text-primary transition">Log Out</button>
          </div>
       </header>
 
@@ -44,16 +44,16 @@ export default function UserDashboard() {
              </button>
              <button 
                 onClick={() => navigate('/user/rewards')}
-                className="md:hidden flex-1 bg-ocean-800 border-2 border-yellow-500/30 text-yellow-500 hover:bg-ocean-700 py-4 rounded-3xl font-black text-lg flex justify-center items-center gap-3 transition-transform hover:scale-[1.02]"
+                className="md:hidden flex-1 bg-panel border-2 border-yellow-500/30 text-yellow-500 hover:bg-card py-4 rounded-3xl font-black text-lg flex justify-center items-center gap-3 transition-transform hover:scale-[1.02]"
              >
                 <Award size={24} /> Rewards
              </button>
          </div>
 
          {/* Social Feed header */}
-         <div className="mt-4 border-b border-white/10 pb-4 flex justify-between items-end">
+         <div className="mt-4 border-b border-subtle pb-4 flex justify-between items-end">
             <h2 className="text-2xl font-black tracking-tight">Community Feed</h2>
-            <p className="text-sm text-gray-400 font-medium">Live from the SUTRA Network</p>
+            <p className="text-sm text-muted font-medium">Live from the SUTRA Network</p>
          </div>
 
          {/* Feed List */}
@@ -64,16 +64,16 @@ export default function UserDashboard() {
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ delay: i * 0.1 }}
-                   className="bg-ocean-800/40 border border-white/5 rounded-[2rem] p-4 md:p-6 backdrop-blur-md shadow-lg"
+                   className="bg-panel/40 border border-subtle rounded-[2rem] p-4 md:p-6 backdrop-blur-md shadow-lg"
                 >
                     <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-ocean-700 border border-white/10 flex items-center justify-center font-bold text-white text-sm">
+                            <div className="w-10 h-10 rounded-full bg-card border border-subtle flex items-center justify-center font-bold text-primary text-sm">
                                {post.user?.charAt(0) || 'C'}
                             </div>
                             <div>
                                <p className="font-bold text-md">{post.user}</p>
-                               <div className="flex items-center gap-1 text-xs text-gray-400 font-mono mt-0.5">
+                               <div className="flex items-center gap-1 text-xs text-muted font-mono mt-0.5">
                                   <Clock size={12} className="text-accent-blue" />
                                   {post.timestamp?.toDate ? post.timestamp.toDate().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : 'Just now'}
                                </div>
@@ -89,25 +89,25 @@ export default function UserDashboard() {
                         </div>
                     </div>
 
-                    <div className="w-full h-64 md:h-80 bg-black/40 rounded-3xl mt-4 mb-5 border border-white/5 overflow-hidden relative group">
+                    <div className="w-full h-64 md:h-80 bg-deep/40 rounded-3xl mt-4 mb-5 border border-subtle overflow-hidden relative group">
                         {post.imageBase64 ? (
                            <img src={post.imageBase64} className="w-full h-full object-cover" alt="Waste tag" />
                         ) : (
-                           <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
+                           <div className="w-full h-full flex flex-col items-center justify-center text-muted-dark">
                              <Camera size={48} className="mb-4 opacity-20" />
-                             <p className="font-bold text-sm bg-black/50 px-4 py-2 rounded-lg">{post.image}</p>
+                             <p className="font-bold text-sm bg-deep/50 px-4 py-2 rounded-lg">{post.image}</p>
                            </div>
                         )}
-                        <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 flex items-center gap-2 max-w-[90%]">
+                        <div className="absolute bottom-4 left-4 bg-deep/60 backdrop-blur-md px-4 py-2 rounded-xl border border-subtle flex items-center gap-2 max-w-[90%]">
                            <MapPin size={16} className="text-accent-teal shrink-0" /> 
-                           <span className="text-white text-xs md:text-sm font-bold font-mono truncate">{post.address || 'GPS Coordinates Logged'}</span>
+                           <span className="text-primary text-xs md:text-sm font-bold font-mono truncate">{post.address || 'GPS Coordinates Logged'}</span>
                         </div>
                     </div>
 
                     <div className="flex justify-between items-center ml-2 mr-2">
                         <div className="flex flex-wrap gap-2">
                             {post.tags?.map(tag => (
-                               <span key={tag} className="bg-white/5 text-gray-300 px-3 py-1 rounded-full text-xs font-bold border border-white/10 uppercase tracking-wider">#{tag}</span>
+                               <span key={tag} className="bg-white/5 text-muted px-3 py-1 rounded-full text-xs font-bold border border-subtle uppercase tracking-wider">#{tag}</span>
                             ))}
                         </div>
                         {post.creditsEarned && (
@@ -120,10 +120,10 @@ export default function UserDashboard() {
             ))}
 
             {reports.length === 0 && (
-                <div className="text-center py-20 bg-ocean-800/30 rounded-3xl border border-white/5">
+                <div className="text-center py-20 bg-panel/30 rounded-3xl border border-subtle">
                     <CheckCircle2 size={64} className="mx-auto text-gray-600 mb-4" />
-                    <h2 className="text-2xl font-bold text-gray-400">Feed is empty!</h2>
-                    <p className="text-gray-500 mt-2">Be the first to scan and report.</p>
+                    <h2 className="text-2xl font-bold text-muted">Feed is empty!</h2>
+                    <p className="text-muted-dark mt-2">Be the first to scan and report.</p>
                 </div>
             )}
          </div>

@@ -45,12 +45,20 @@ export const AppProvider = ({ children }) => {
 
   // Global Sync Engine for Reports Stream
   useEffect(() => {
-    const q = query(collection(db, 'reports'), orderBy('timestamp', 'desc'));
+    // We strictly remove orderBy to bypass missing Google Compound Index crashes across phones
+    const q = query(collection(db, 'reports')); 
     const unsubReports = onSnapshot(q, (snapshot) => {
        const realtimeData = [];
        snapshot.forEach((doc) => {
-           realtimeData.push({ id: doc.id, ...doc.data() });
+           const data = doc.data();
+           realtimeData.push({ 
+               id: doc.id, 
+               ...data,
+               _time: data.timestamp?.toMillis?.() || Date.now() 
+           });
        });
+       // Sort natively on device (Descending)
+       realtimeData.sort((a, b) => b._time - a._time);
        setReports(realtimeData);
     }, (error) => {
        console.error("Critical Cloud Sync Error:", error);
@@ -72,6 +80,18 @@ export const AppProvider = ({ children }) => {
 
     return () => unsubAlerts();
   }, []);
+
+  // Theme Settings
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    if (theme === 'light') {
+       document.documentElement.classList.add('light-mode');
+    } else {
+       document.documentElement.classList.remove('light-mode');
+    }
+  }, [theme]);
 
   // Write directly to cloud database
   const addReport = async (report) => {
@@ -103,13 +123,16 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
   return (
     <AppContext.Provider value={{
       user, setUser,
       reports, setReports, addReport, updateReportStatus, deleteReport,
       alerts, setAlerts,
       credits, setCredits,
-      rivers, setRivers
+      rivers, setRivers,
+      theme, toggleTheme
     }}>
       {children}
     </AppContext.Provider>

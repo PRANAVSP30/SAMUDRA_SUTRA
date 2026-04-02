@@ -39,7 +39,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-ocean-900 border-t-4 border-accent-blue p-4 text-white">
+    <div className="flex flex-col h-screen bg-root border-t-4 border-accent-blue p-4 text-primary">
       {/* Header Stats Pane */}
       <div className="flex justify-between items-center mb-6">
         <div>
@@ -49,12 +49,12 @@ export default function Dashboard() {
           <p className="text-accent-blue/70">Centralized Waste Intelligence Node</p>
         </div>
         <div className="flex space-x-4">
-          <div className="bg-ocean-800 p-4 rounded-xl border border-accent-blue/30 w-40 text-center">
+          <div className="bg-panel p-4 rounded-xl border border-accent-blue/30 w-40 text-center">
             <Wind className="mx-auto mb-2 text-red-400" />
             <span className="text-2xl font-bold">{reports.filter(r => r.status === 'pending').length}</span>
             <p className="text-xs text-red-300">Active Hazards</p>
           </div>
-          <div className="bg-ocean-800 p-4 rounded-xl border border-accent-teal/30 w-40 text-center">
+          <div className="bg-panel p-4 rounded-xl border border-accent-teal/30 w-40 text-center">
             <Trash2 className="mx-auto mb-2 text-green-400" />
             <span className="text-2xl font-bold">{reports.filter(r => r.status === 'completed').length}</span>
             <p className="text-xs text-green-300">Cleaned Sites</p>
@@ -101,7 +101,7 @@ export default function Dashboard() {
         </div>
 
         {/* Alerts Panel Pane */}
-        <div className="w-96 bg-ocean-800 rounded-2xl flex flex-col p-4 border border-red-500/30">
+        <div className="w-96 bg-panel rounded-2xl flex flex-col p-4 border border-red-500/30">
           <h2 className="text-xl font-bold flex items-center mb-4 text-red-400">
             <AlertCircle className="mr-2" /> Live Alerts 
           </h2>
@@ -119,7 +119,7 @@ export default function Dashboard() {
                      <span>Lat: {report.lat.toFixed(2)}</span>
                      <span>Citizen: {report.citizen}</span>
                   </p>
-                  <button className="mt-3 bg-red-600/50 hover:bg-red-500 text-white w-full py-1 rounded transition">View Report</button>
+                  <button className="mt-3 bg-red-600/50 hover:bg-red-500 text-primary w-full py-1 rounded transition">View Report</button>
                 </motion.div>
              ))}
           </div>

@@ -74,7 +74,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-ocean-900 border-t-4 border-accent-blue font-sans relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-root border-t-4 border-accent-blue font-sans relative overflow-hidden">
       
       {/* Background flare */}
       <div className="absolute w-[800px] h-[800px] bg-accent-blue/5 rounded-full blur-[100px] -top-32 -left-32 pointer-events-none" />
@@ -82,12 +82,12 @@ export default function Login() {
       <motion.div 
         initial={{ opacity: 0, y: 30 }} 
         animate={{ opacity: 1, y: 0 }} 
-        className="z-10 bg-ocean-800 border border-white/10 rounded-3xl p-10 w-full max-w-md shadow-2xl backdrop-blur-md"
+        className="z-10 bg-panel border border-subtle rounded-3xl p-10 w-full max-w-md shadow-2xl backdrop-blur-md"
       >
         <div className="text-center mb-10">
           <Shield size={48} className="mx-auto text-accent-blue mb-6" />
-          <h2 className="text-4xl font-black text-white tracking-tight">Welcome Back</h2>
-          <p className="text-gray-400 mt-2 font-medium">Log in to SUTRA Network</p>
+          <h2 className="text-4xl font-black text-primary tracking-tight">Welcome Back</h2>
+          <p className="text-muted mt-2 font-medium">Log in to SUTRA Network</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -99,13 +99,13 @@ export default function Login() {
           )}
 
           <div>
-            <label className="block text-gray-400 mb-2 text-sm font-bold uppercase tracking-wider">Email</label>
+            <label className="block text-muted mb-2 text-sm font-bold uppercase tracking-wider">Email</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-4 text-gray-500" size={20} />
+              <Mail className="absolute left-4 top-4 text-muted-dark" size={20} />
               <input 
                 type="email" 
                 required
-                className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue text-white transition-all shadow-inner" 
+                className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue text-primary transition-all shadow-inner" 
                 placeholder="citizen@india.gov"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -114,22 +114,22 @@ export default function Login() {
           
           <div>
             <div className="flex justify-between items-center mb-2">
-               <label className="block text-gray-400 text-sm font-bold uppercase tracking-wider">Password</label>
+               <label className="block text-muted text-sm font-bold uppercase tracking-wider">Password</label>
                <button type="button" onClick={() => alert("Password reset link sent to email!")} className="text-accent-blue text-xs font-bold hover:underline">Forgot Password?</button>
             </div>
             <div className="relative">
-              <Lock className="absolute left-4 top-4 text-gray-500" size={20} />
+              <Lock className="absolute left-4 top-4 text-muted-dark" size={20} />
               <input 
                 type={showPassword ? "text" : "password"}
                 required 
-                className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-12 focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue text-white transition-all shadow-inner" 
+                className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-12 focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue text-primary transition-all shadow-inner" 
                 placeholder="••••••••"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button 
                 type="button" 
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors"
+                className="absolute right-4 top-4 text-muted hover:text-primary transition-colors"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -137,12 +137,12 @@ export default function Login() {
           </div>
 
           <div className="flex justify-between items-center px-1">
-             <label className="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-300">
+             <label className="flex items-center gap-2 cursor-pointer text-sm font-medium text-muted">
                 <input 
                    type="checkbox" 
                    checked={rememberMe}
                    onChange={(e) => setRememberMe(e.target.checked)}
-                   className="w-4 h-4 rounded bg-ocean-900 border-white/20 text-accent-blue focus:ring-accent-blue"
+                   className="w-4 h-4 rounded bg-root border-white/20 text-accent-blue focus:ring-accent-blue"
                 />
                 Keep me logged in
              </label>
@@ -158,13 +158,13 @@ export default function Login() {
 
         <div className="my-8 flex items-center gap-4">
            <div className="h-px bg-white/10 flex-1" />
-           <span className="text-gray-500 text-sm font-bold uppercase tracking-widest">OR</span>
+           <span className="text-muted-dark text-sm font-bold uppercase tracking-widest">OR</span>
            <div className="h-px bg-white/10 flex-1" />
         </div>
 
         <button 
            onClick={handleGoogleAuth}
-           className="w-full bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold py-4 rounded-2xl flex justify-center items-center gap-3 transition-all"
+           className="w-full bg-white/5 border border-subtle hover:bg-white/10 text-primary font-bold py-4 rounded-2xl flex justify-center items-center gap-3 transition-all"
         >
            <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -175,8 +175,8 @@ export default function Login() {
            Login with Google
         </button>
 
-        <p className="text-center mt-8 text-gray-400 font-medium">
-          Don't have an account? <span className="text-white font-bold cursor-pointer hover:underline" onClick={() => navigate('/register')}>Sign Up</span>
+        <p className="text-center mt-8 text-muted font-medium">
+          Don't have an account? <span className="text-primary font-bold cursor-pointer hover:underline" onClick={() => navigate('/register')}>Sign Up</span>
         </p>
       </motion.div>
     </div>

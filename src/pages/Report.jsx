@@ -39,19 +39,19 @@ export default function Report() {
   };
 
   return (
-    <div className="min-h-screen bg-ocean-900 flex flex-col items-center justify-center p-6">
-      <div className="w-full max-w-md bg-ocean-800 rounded-3xl p-8 border border-accent-blue/30 glow-effect relative overflow-hidden">
+    <div className="min-h-screen bg-root flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-md bg-panel rounded-3xl p-8 border border-accent-blue/30 glow-effect relative overflow-hidden">
         <h2 className="text-3xl font-bold text-center mb-8 flex justify-center items-center gap-2">
             <AlertTriangle className="text-yellow-400" /> Report Hazard
         </h2>
 
         {step === 1 && (
             <motion.div initial={{opacity:0}} animate={{opacity:1}} className="flex flex-col gap-6">
-                <div className="h-64 bg-ocean-900 border-2 border-dashed border-accent-blue/50 rounded-2xl flex flex-col items-center justify-center">
+                <div className="h-64 bg-root border-2 border-dashed border-accent-blue/50 rounded-2xl flex flex-col items-center justify-center">
                     <Camera size={48} className="text-accent-blue/40 mb-4" />
                     <p className="text-accent-blue/60 text-center px-4">Camera Feed Active</p>
                 </div>
-                <button onClick={handleCapture} className="bg-accent-blue/20 hover:bg-accent-blue border border-accent-blue font-bold text-white py-4 rounded-xl flex justify-center items-center transition">
+                <button onClick={handleCapture} className="bg-accent-blue/20 hover:bg-accent-blue border border-accent-blue font-bold text-primary py-4 rounded-xl flex justify-center items-center transition">
                    <Upload className="mr-2"/> Capture Image
                 </button>
             </motion.div>
@@ -64,7 +64,7 @@ export default function Report() {
                 </div>
                 <p className="text-center text-lg">AI Verification Complete: <span className="font-bold text-green-400">Waste Detected</span></p>
                 
-                <button onClick={handleLocation} className="w-full bg-accent-teal/20 hover:bg-accent-teal border border-accent-teal font-bold text-white py-4 rounded-xl flex justify-center items-center transition mt-8">
+                <button onClick={handleLocation} className="w-full bg-accent-teal/20 hover:bg-accent-teal border border-accent-teal font-bold text-primary py-4 rounded-xl flex justify-center items-center transition mt-8">
                    <MapPin className="mr-2"/> Tag Location
                 </button>
             </motion.div>
@@ -72,12 +72,12 @@ export default function Report() {
 
         {step === 3 && (
             <motion.div initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} className="flex flex-col gap-6 items-center">
-                <div className="w-full p-6 bg-ocean-900 rounded-2xl border border-white/10">
+                <div className="w-full p-6 bg-root rounded-2xl border border-subtle">
                     <p className="text-accent-blue mb-2">GPS Coordinates Acquired:</p>
                     <p className="font-mono text-xl">{location.lat.toFixed(4)}, {location.lng.toFixed(4)}</p>
                 </div>
                 
-                <button onClick={handleSubmit} className="w-full bg-green-600/50 hover:bg-green-500 border border-green-400 font-bold text-white py-4 rounded-xl flex justify-center items-center transition mt-4 animate-pulse">
+                <button onClick={handleSubmit} className="w-full bg-green-600/50 hover:bg-green-500 border border-green-400 font-bold text-primary py-4 rounded-xl flex justify-center items-center transition mt-4 animate-pulse">
                    Submit to Network
                 </button>
             </motion.div>

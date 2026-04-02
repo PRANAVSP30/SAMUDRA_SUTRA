@@ -46,18 +46,18 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-ocean-900 border-t-4 border-accent-teal font-sans relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-root border-t-4 border-accent-teal font-sans relative overflow-hidden">
       <div className="absolute w-[800px] h-[800px] bg-accent-teal/5 rounded-full blur-[100px] -bottom-32 -right-32 pointer-events-none" />
 
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }} 
         animate={{ opacity: 1, scale: 1 }} 
-        className="z-10 bg-ocean-800 border border-white/10 rounded-3xl p-10 w-full max-w-md shadow-2xl backdrop-blur-md"
+        className="z-10 bg-panel border border-subtle rounded-3xl p-10 w-full max-w-md shadow-2xl backdrop-blur-md"
       >
         <div className="text-center mb-10">
-          <Shield size={48} className="mx-auto text-white mb-6" />
-          <h2 className="text-4xl font-black text-white tracking-tight">Join Network</h2>
-          <p className="text-gray-400 mt-2 font-medium">Register your node identity</p>
+          <Shield size={48} className="mx-auto text-primary mb-6" />
+          <h2 className="text-4xl font-black text-primary tracking-tight">Join Network</h2>
+          <p className="text-muted mt-2 font-medium">Register your node identity</p>
         </div>
 
         <form onSubmit={handleRegister} className="space-y-5">
@@ -69,37 +69,37 @@ export default function Register() {
            )}
 
            <div>
-            <label className="block text-gray-400 mb-2 text-sm font-bold uppercase tracking-wider">Full Name</label>
+            <label className="block text-muted mb-2 text-sm font-bold uppercase tracking-wider">Full Name</label>
             <div className="relative">
-              <User className="absolute left-4 top-4 text-gray-500" size={20} />
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="Ravi Kumar" />
+              <User className="absolute left-4 top-4 text-muted-dark" size={20} />
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-4 text-primary focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="Ravi Kumar" />
             </div>
           </div>
 
           <div>
-            <label className="block text-gray-400 mb-2 text-sm font-bold uppercase tracking-wider">Email</label>
+            <label className="block text-muted mb-2 text-sm font-bold uppercase tracking-wider">Email</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-4 text-gray-500" size={20} />
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="ravi@email.com" />
+              <Mail className="absolute left-4 top-4 text-muted-dark" size={20} />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-4 text-primary focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="ravi@email.com" />
             </div>
           </div>
           
           <div>
-            <label className="block text-gray-400 mb-2 text-sm font-bold uppercase tracking-wider">Password</label>
+            <label className="block text-muted mb-2 text-sm font-bold uppercase tracking-wider">Password</label>
             <div className="relative">
-              <Lock className="absolute left-4 top-4 text-gray-500" size={20} />
-              <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-12 text-white focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="••••••••" />
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors">
+              <Lock className="absolute left-4 top-4 text-muted-dark" size={20} />
+              <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-12 text-primary focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="••••••••" />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-4 text-muted hover:text-primary transition-colors">
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
           </div>
 
           <div>
-             <label className="block text-gray-400 mb-2 text-sm font-bold uppercase tracking-wider">Confirm Password</label>
+             <label className="block text-muted mb-2 text-sm font-bold uppercase tracking-wider">Confirm Password</label>
              <div className="relative">
-               <Lock className="absolute left-4 top-4 text-gray-500" size={20} />
-               <input type={showPassword ? "text" : "password"} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="w-full bg-ocean-900/50 border border-white/10 rounded-2xl py-4 pl-12 pr-12 text-white focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="••••••••" />
+               <Lock className="absolute left-4 top-4 text-muted-dark" size={20} />
+               <input type={showPassword ? "text" : "password"} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="w-full bg-root/50 border border-subtle rounded-2xl py-4 pl-12 pr-12 text-primary focus:border-accent-teal focus:ring-1 focus:ring-accent-teal transition-all shadow-inner" placeholder="••••••••" />
              </div>
            </div>
 
@@ -108,8 +108,8 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="text-center mt-8 text-gray-400 font-medium">
-          Already synced? <span className="text-white font-bold cursor-pointer hover:underline" onClick={() => navigate('/login')}>Login</span>
+        <p className="text-center mt-8 text-muted font-medium">
+          Already synced? <span className="text-primary font-bold cursor-pointer hover:underline" onClick={() => navigate('/login')}>Login</span>
         </p>
       </motion.div>
     </div>

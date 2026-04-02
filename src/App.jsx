@@ -36,11 +36,11 @@ const GlobalSOSListener = () => {
 
    return (
       <div className="fixed inset-0 z-[99999] pointer-events-none flex items-center justify-center p-6 bg-red-900/40 backdrop-blur-sm animate-pulse">
-         <div className="bg-red-600 border-4 border-red-400 text-white p-8 rounded-3xl max-w-2xl w-full text-center shadow-[0_0_100px_rgba(239,68,68,0.8)]">
+         <div className="bg-red-600 border-4 border-red-400 text-primary p-8 rounded-3xl max-w-2xl w-full text-center shadow-[0_0_100px_rgba(239,68,68,0.8)]">
             <AlertOctagon size={80} className="mx-auto mb-6 animate-bounce" />
             <h1 className="text-4xl font-black tracking-widest uppercase mb-4">{activeSos.title}</h1>
             <p className="text-xl font-bold font-mono opacity-90">{activeSos.desc}</p>
-            <div className="mt-8 bg-black/30 p-4 rounded-xl text-sm font-mono text-red-200">
+            <div className="mt-8 bg-deep/30 p-4 rounded-xl text-sm font-mono text-red-200">
                TARGET ZONE: {activeSos.address} <br/> 
                Broadcast Time: {activeSos.timestamp?.toDate ? activeSos.timestamp.toDate().toLocaleTimeString() : 'NOW'}
             </div>
@@ -53,7 +53,7 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <div className="min-h-screen bg-ocean-900 text-white font-sans overflow-x-hidden relative">
+        <div className="min-h-screen bg-root text-primary font-sans overflow-x-hidden relative">
           <GlobalSOSListener />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -37,7 +37,7 @@ export default function AdminAlerts() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050B14] text-white font-sans p-4 md:p-8">
+    <div className="min-h-screen bg-[#050B14] text-primary font-sans p-4 md:p-8">
       <div className="max-w-6xl mx-auto flex flex-col gap-6">
 
         {/* Header Setup */}
@@ -45,13 +45,13 @@ export default function AdminAlerts() {
            <div className="flex items-center gap-4">
               <button 
                  onClick={() => navigate('/admin/dashboard')}
-                 className="w-12 h-12 rounded-full bg-[#1C2A40] flex items-center justify-center text-gray-400 hover:text-white transition shadow-inner"
+                 className="w-12 h-12 rounded-full bg-[#1C2A40] flex items-center justify-center text-muted hover:text-primary transition shadow-inner"
               >
                   ←
               </button>
               <div>
                  <h1 className="text-2xl font-black tracking-tight flex items-center gap-3"><AlertOctagon className="text-red-500" /> Crisis Command Center</h1>
-                 <p className="text-xs text-gray-400 font-medium mt-1">Deploy automated and manual public alerts to citizens.</p>
+                 <p className="text-xs text-muted font-medium mt-1">Deploy automated and manual public alerts to citizens.</p>
               </div>
            </div>
            
@@ -73,34 +73,34 @@ export default function AdminAlerts() {
                <h2 className="text-xl font-black mb-6 flex items-center gap-2"><Target className="text-accent-teal" /> DEPLOY TASK FORCE</h2>
                <form onSubmit={handleCreateAlert} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    <div>
-                       <label className="block text-[10px] uppercase font-black tracking-widest text-gray-400 mb-2">Crisis Title</label>
+                       <label className="block text-[10px] uppercase font-black tracking-widest text-muted mb-2">Crisis Title</label>
                        <input 
                           type="text" required value={newAlert.title} onChange={e=>setNewAlert({...newAlert, title: e.target.value})}
-                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-white focus:ring-1 focus:ring-accent-blue" 
+                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-primary focus:ring-1 focus:ring-accent-blue" 
                           placeholder="e.g. Major Plastic Spill Setup" 
                         />
                    </div>
                    <div>
-                       <label className="block text-[10px] uppercase font-black tracking-widest text-gray-400 mb-2">Location Identity</label>
+                       <label className="block text-[10px] uppercase font-black tracking-widest text-muted mb-2">Location Identity</label>
                        <input 
                           type="text" required value={newAlert.address} onChange={e=>setNewAlert({...newAlert, address: e.target.value})}
-                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-white focus:ring-1 focus:ring-accent-blue" 
+                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-primary focus:ring-1 focus:ring-accent-blue" 
                           placeholder="e.g. Gateway of India Coast" 
                         />
                    </div>
                    <div className="md:col-span-2">
-                       <label className="block text-[10px] uppercase font-black tracking-widest text-gray-400 mb-2">Objective Description</label>
+                       <label className="block text-[10px] uppercase font-black tracking-widest text-muted mb-2">Objective Description</label>
                        <textarea 
                           required value={newAlert.description} onChange={e=>setNewAlert({...newAlert, description: e.target.value})}
-                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-white focus:ring-1 focus:ring-accent-blue h-24 resize-none" 
+                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-primary focus:ring-1 focus:ring-accent-blue h-24 resize-none" 
                           placeholder="Enter details of what needs to be cleaned..." 
                         ></textarea>
                    </div>
                    <div>
-                       <label className="block text-[10px] uppercase font-black tracking-widest text-gray-400 mb-2">Priority Level</label>
+                       <label className="block text-[10px] uppercase font-black tracking-widest text-muted mb-2">Priority Level</label>
                        <select 
                           value={newAlert.priority} onChange={e=>setNewAlert({...newAlert, priority: e.target.value})}
-                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-white focus:ring-1 focus:ring-accent-blue outline-none" 
+                          className="w-full bg-[#1C2A40] border-none rounded-xl p-4 text-primary focus:ring-1 focus:ring-accent-blue outline-none" 
                         >
                            <option>High</option>
                            <option>Critical</option>
@@ -108,8 +108,8 @@ export default function AdminAlerts() {
                        </select>
                    </div>
                    <div className="flex items-end justify-end gap-3">
-                       <button type="button" onClick={() => setShowForm(false)} className="px-6 py-4 text-gray-400 font-bold hover:text-white">Cancel</button>
-                       <button type="submit" className="px-8 py-4 bg-red-500 hover:bg-red-400 text-white font-black rounded-xl">BROADCAST GLOBALLY</button>
+                       <button type="button" onClick={() => setShowForm(false)} className="px-6 py-4 text-muted font-bold hover:text-primary">Cancel</button>
+                       <button type="submit" className="px-8 py-4 bg-red-500 hover:bg-red-400 text-primary font-black rounded-xl">BROADCAST GLOBALLY</button>
                    </div>
                </form>
             </motion.div>
@@ -118,7 +118,7 @@ export default function AdminAlerts() {
         {/* Alerts Feed */}
         <div className="flex flex-col gap-4">
             {alerts.length === 0 && (
-                <div className="text-center py-20 bg-[#0A111F] rounded-[2rem] border border-[#1C2A40] text-gray-500 font-medium">
+                <div className="text-center py-20 bg-[#0A111F] rounded-[2rem] border border-[#1C2A40] text-muted-dark font-medium">
                     No active crises reported. Coastlines are clear.
                 </div>
             )}
@@ -142,7 +142,7 @@ export default function AdminAlerts() {
                        <div className="flex-1">
                            <div className="flex items-center gap-3 mb-2">
                                <span className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full ${
-                                  alert.priority === 'Critical' ? 'bg-red-500 text-white animate-pulse' :
+                                  alert.priority === 'Critical' ? 'bg-red-500 text-primary animate-pulse' :
                                   'bg-red-500/10 text-red-500 border border-red-500/30'
                                }`}>PRIORITY: {alert.priority || 'HIGH'}</span>
                                
@@ -151,10 +151,10 @@ export default function AdminAlerts() {
                                }`}>{alert.status}</span>
                            </div>
                            
-                           <h3 className={`text-xl font-black mb-2 ${isResolved ? 'text-gray-500 line-through' : 'text-white'}`}>{alert.title}</h3>
-                           <p className="text-gray-400 text-sm mb-4 leading-relaxed max-w-2xl">{alert.description}</p>
+                           <h3 className={`text-xl font-black mb-2 ${isResolved ? 'text-muted-dark line-through' : 'text-primary'}`}>{alert.title}</h3>
+                           <p className="text-muted text-sm mb-4 leading-relaxed max-w-2xl">{alert.description}</p>
                            
-                           <div className="flex items-center gap-4 text-xs font-mono text-gray-500">
+                           <div className="flex items-center gap-4 text-xs font-mono text-muted-dark">
                                <span className="flex items-center gap-1"><MapPin size={12} /> {alert.address || "Live Geolocated"}</span>
                                <span className="flex items-center gap-1"><Clock size={12} /> {alert.timestamp?.toDate ? alert.timestamp.toDate().toLocaleDateString() : 'Syncing'}</span>
                            </div>
@@ -171,7 +171,7 @@ export default function AdminAlerts() {
                            )}
                            <button 
                               onClick={() => deleteAlert(alert.id)}
-                              className="px-6 py-3 bg-[#1C2A40] hover:bg-red-500/20 text-gray-400 hover:text-red-400 rounded-xl font-bold transition flex justify-center items-center"
+                              className="px-6 py-3 bg-[#1C2A40] hover:bg-red-500/20 text-muted hover:text-red-400 rounded-xl font-bold transition flex justify-center items-center"
                            >
                               Delete
                            </button>

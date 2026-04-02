@@ -7,13 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        ocean: {
-          900: '#001a33',
-          800: '#002952',
-          700: '#004080',
-          600: '#0055b3',
-          500: '#0066cc',
-        },
+        root: 'var(--color-root)',
+        panel: 'var(--color-panel)',
+        card: 'var(--color-card)',
+        deep: 'var(--color-deep)',
+        subtle: 'var(--color-border)',
+        primary: 'var(--color-text)',
+        muted: 'var(--color-text-muted)',
+        'muted-dark': 'var(--color-text-muted-dark)',
         accent: {
           blue: '#00f2fe',
           teal: '#4facfe',

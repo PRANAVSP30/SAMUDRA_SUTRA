@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ocean-900: #001a33;
-  --color-ocean-800: #002952;
-  --color-ocean-700: #004080;
-  --color-ocean-600: #0055b3;
-  --color-ocean-500: #0066cc;
   --color-accent-blue: #00f2fe;
   --color-accent-teal: #4facfe;
   
@@ -18,10 +13,36 @@
 }
 
 @layer base {
+  :root {
+    /* DEFAULT DARK MODE (Cyberpunk) */
+    --color-root: #0A0E17;
+    --color-panel: #0E131F;
+    --color-card: #151B28;
+    --color-deep: #05070a;
+    --color-border: #1C2536;
+    --color-text: #ffffff;
+    --color-text-muted: #9ca3af;
+    --color-text-muted-dark: #6b7280;
+  }
+
+  :root.light-mode {
+    /* CLEAN LIGHT MODE (Enterprise) */
+    --color-root: #f8fafc;
+    --color-panel: #ffffff;
+    --color-card: #f1f5f9;
+    --color-deep: #e2e8f0;
+    --color-border: #cbd5e1;
+    --color-text: #0f172a;
+    --color-text-muted: #475569;
+    --color-text-muted-dark: #94a3b8;
+  }
+
   body {
-    @apply bg-ocean-900 text-white font-sans antialiased overflow-x-hidden;
+    @apply bg-root text-primary font-sans antialiased overflow-x-hidden transition-colors duration-500 ease-in-out;
   }
 }
+
+
 
 /* Custom glow effect */
 .glow-effect {

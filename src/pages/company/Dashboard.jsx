@@ -25,7 +25,7 @@ export default function CompanyDashboard() {
     };
 
     return (
-        <div className="min-h-screen bg-ocean-900 p-8 text-white relative overflow-hidden">
+        <div className="min-h-screen bg-root p-8 text-primary relative overflow-hidden">
             <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none" />
             
             <div className="max-w-5xl mx-auto z-10 relative">
@@ -36,20 +36,20 @@ export default function CompanyDashboard() {
                         </h1>
                         <p className="text-accent-blue/70 mt-2 tracking-wide font-mono text-sm">SPONSOR ID: 894-CX-SUTRA</p>
                     </div>
-                     <button className="bg-ocean-800 border border-red-500/30 text-red-400 px-6 py-2 rounded-lg hover:bg-ocean-700 transition" onClick={() => navigate('/login')}>
+                     <button className="bg-panel border border-red-500/30 text-red-400 px-6 py-2 rounded-lg hover:bg-card transition" onClick={() => navigate('/login')}>
                         Exit Portal
                      </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <motion.div whileHover={{y:-5}} className="bg-ocean-800 flex flex-col justify-center p-8 rounded-3xl border border-accent-blue/30 text-center">
+                    <motion.div whileHover={{y:-5}} className="bg-panel flex flex-col justify-center p-8 rounded-3xl border border-accent-blue/30 text-center">
                         <div className="text-6xl font-black mb-2 flex items-center justify-center gap-2">
                             <span className="text-accent-blue">{impactKG.toFixed(1)}</span>
                         </div>
                         <p className="text-accent-blue text-sm uppercase font-bold tracking-widest">Kg Cleared via Sponsors</p>
                     </motion.div>
                     
-                    <motion.div whileHover={{y:-5}} className="bg-ocean-800 flex flex-col justify-center p-8 rounded-3xl border border-accent-teal/30 text-center relative overflow-hidden">
+                    <motion.div whileHover={{y:-5}} className="bg-panel flex flex-col justify-center p-8 rounded-3xl border border-accent-teal/30 text-center relative overflow-hidden">
                         <div className="absolute inset-0 bg-green-500/5 z-0" />
                         <div className="text-6xl font-black mb-2 flex items-center justify-center gap-2 z-10">
                             <Leaf className="text-green-500" size={48} />
@@ -58,7 +58,7 @@ export default function CompanyDashboard() {
                         <p className="text-accent-teal text-sm uppercase font-bold tracking-widest z-10">Verified Credits Created</p>
                     </motion.div>
 
-                    <motion.div whileHover={{y:-5}} className="bg-ocean-800 flex flex-col justify-center p-8 rounded-3xl border border-yellow-500/30 text-center flex flex-col justify-center">
+                    <motion.div whileHover={{y:-5}} className="bg-panel flex flex-col justify-center p-8 rounded-3xl border border-yellow-500/30 text-center flex flex-col justify-center">
                          <div className="text-4xl font-black text-yellow-400 flex items-center justify-center mb-2 gap-2">
                             <Target size={36} /> Tier 2
                          </div>
@@ -90,13 +90,13 @@ export default function CompanyDashboard() {
                    
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                        {reports.filter(r => r.status !== 'completed').slice(0, 4).map(report => (
-                           <div key={report.id} className="bg-ocean-800 border border-white/10 rounded-2xl p-5 flex items-center gap-5 hover:border-accent-blue/40 transition">
-                                <img src={report.imageUrl} alt="Contamination" className="w-24 h-24 object-cover rounded-xl border border-white/10" />
+                           <div key={report.id} className="bg-panel border border-subtle rounded-2xl p-5 flex items-center gap-5 hover:border-accent-blue/40 transition">
+                                <img src={report.imageUrl} alt="Contamination" className="w-24 h-24 object-cover rounded-xl border border-subtle" />
                                 <div className="flex-1">
-                                    <h4 className="font-bold text-white uppercase text-sm mb-1">{report.prediction}</h4>
-                                    <p className="text-xs text-gray-400 flex items-center gap-1 mb-3"><MapPin size={12}/> {report.address}</p>
+                                    <h4 className="font-bold text-primary uppercase text-sm mb-1">{report.prediction}</h4>
+                                    <p className="text-xs text-muted flex items-center gap-1 mb-3"><MapPin size={12}/> {report.address}</p>
                                     <div className="flex justify-between items-center">
-                                       <span className="bg-ocean-900 text-xs px-2 py-1 rounded text-accent-blue font-mono">Cost: 1 Credit</span>
+                                       <span className="bg-root text-xs px-2 py-1 rounded text-accent-blue font-mono">Cost: 1 Credit</span>
                                        <button onClick={() => handleSponsorReport(report.id)} className="text-xs bg-green-500/10 hover:bg-green-500 hover:text-ocean-900 transition text-green-400 font-bold px-3 py-1.5 rounded flex items-center gap-1">
                                           Fund & Collect Waste <ArrowRight size={10} />
                                        </button>
@@ -105,7 +105,7 @@ export default function CompanyDashboard() {
                            </div>
                        ))}
                        {reports.filter(r => r.status !== 'completed').length === 0 && (
-                           <div className="col-span-2 text-center text-gray-500 py-10 bg-ocean-800/50 rounded-2xl border border-white/5">
+                           <div className="col-span-2 text-center text-muted-dark py-10 bg-panel/50 rounded-2xl border border-subtle">
                               No active reports found. Wait for a citizen to submit waste!
                            </div>
                        )}
